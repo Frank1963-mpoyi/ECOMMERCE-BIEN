@@ -2,3 +2,25 @@ asgiref==3.3.1
 Django==3.0.1
 pytz==2020.4
 sqlparse==0.4.1
+
+
+ {% block head %}
+    <link rel="stylesheet" href="{% static 'accounts/css/app.css' %}">
+{% endblock head %}
+
+     /* background: #7abecc !important; */
+
+     .user_card {
+    width: 350;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #74cfbf;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0
+    ,0,0,0.19);
+    border-radius: 5px;
+}
