@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<form action="" method="POST" style="margin-top: 100px;">
+    {% csrf_token %}
+    {{form}}
+
+    
+    <input type="submit" name="Submit">
+</form>
+
+{% endblock %}
