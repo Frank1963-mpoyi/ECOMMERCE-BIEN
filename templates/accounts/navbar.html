@@ -23,28 +23,14 @@
             <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul> -->
 
             <!-- ml-auto will push list to the right -->
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'home' %}"> Dashboard </a>
                 </li>
                 <li class="nav-item active ">
                     <a class="nav-link" href="{% url 'products' %}">Products </a>
                 </li>
-
-
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a style="color:#fff;" class="nav-link" href="#">Logout</a>
-                </li>
-                {% else %}
-
-                <li class="nav-item ">
-                    <a style="color:#fff;" class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item ">
-                    <a style="color:#fff;" class="nav-link" href="#">Register</a>
-                </li>
-                {% endif %}
+                
             </ul>
         </div>
     </div>
