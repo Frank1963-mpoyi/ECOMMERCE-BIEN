@@ -1,8 +1,35 @@
 from django.shortcuts import render, get_object_or_404, redirect
+
+#import Django buidin Userregistration form 
+from django.contrib.auth.forms import UserCreationForm
+
 from .models import Customer, Tag, Product, Order
-from .forms import OrderForm
+from .forms import OrderForm, CreateUserForm
 from .filters import OrderFilter
 
+
+
+
+
+def registerPage(request):
+    template_name = "accounts/register.html"
+    form = CreateUserForm()
+    if request.method == "POST":
+        form = CreateUserForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+    context ={
+        'form': form
+    }
+    return render (request, "accounts/register.html", context)
+
+
+def loginPage(request):
+    template_name = "accounts/login.html"
+    context = {
+        
+    }
+    return render (request,template_name, context)
 
 
 def home (request):
