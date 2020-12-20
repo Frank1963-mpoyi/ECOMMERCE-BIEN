@@ -10,6 +10,7 @@ from .views import (
     deleteOrder,
     registerPage,
     loginPage,
+    logoutUser,
     
     )
 
@@ -17,6 +18,7 @@ urlpatterns = [
     
     path('register', registerPage, name="register" ),
     path('login', loginPage, name="login" ),
+    path('logout', logoutUser, name="logout" ),
     path('', home, name="home" ),
     path('products', products, name="products" ),
     path('customer/<int:pk>', customer, name="customer" ),

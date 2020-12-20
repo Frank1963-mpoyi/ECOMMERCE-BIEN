@@ -51,6 +51,12 @@ def loginPage(request):
     }
     return render (request,template_name, context)
 
+def logoutUser(request):
+    logout(request)
+    return redirect ("login")
+
+
+
 
 def home (request):
     orders          = Order.objects.all()
