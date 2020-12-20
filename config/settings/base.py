@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     # Project Apps
     'ecommerce.apps.system.accounts',
     
-    # 3rd party        
+    # 3rd party  
+    'django_filters',      
     #'debug_toolbar',
 ]
 

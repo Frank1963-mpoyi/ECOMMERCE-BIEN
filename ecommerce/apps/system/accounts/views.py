@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Customer, Tag, Product, Order
 from .forms import OrderForm
+from .filters import OrderFilter
 
 
 
@@ -50,10 +51,16 @@ def customer(request, pk=None):
     
     order_count     = orders.count()
     
+    #--------SEARCH--------------------
+    myFilter        = OrderFilter(request.GET, queryset=orders)# is the orders variable above
+    orders          = myFilter.qs # remake the variable
+    
     context         = {
         'customer'  : customer,
         'orders'    : orders,
-        'order_count':  order_count
+        'order_count':  order_count,
+        'myFilter'    : myFilter 
+        
     }
     template_name   = 'accounts/customers.html'
     
