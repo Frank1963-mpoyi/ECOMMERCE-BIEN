@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 #import Django buidin Userregistration form 
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
 #for logout to avoid anonymous user
 from django.contrib.auth.decorators import login_required
+from ecommerce.apps.system.authenticate.decorators   import  unauthenticated_user, allowed_users#, admin_only
 from .models import Customer, Tag, Product, Order
-from .forms import OrderForm, CreateUserForm
+#from .forms import OrderForm, CreateUserForm
 from .filters import OrderFilter
-from django.contrib import messages
-from ecommerce.apps.system.blog.views import *
+#from django.contrib import messages
+from ecommerce.apps.system.accounts.views import *
+
 
 
 
@@ -16,6 +18,9 @@ from ecommerce.apps.system.blog.views import *
 
 #we put decorator to the view we want to restricted
 @login_required(login_url='login')
+# it allowed only admin to login in home page
+@allowed_users(allowed_roles=['admin'])#we can also pass multiple role like staff etc...
+#@admin_only
 def home (request):
     template_name       = 'accounts\dashboard.html'
     orders              = Order.objects.all()
@@ -44,6 +49,7 @@ def home (request):
 
 
 @login_required(login_url   ='login')
+@allowed_users(allowed_roles=['admin'])
 def products(request):
     template_name           = 'accounts/products.html'
     products                = Product.objects.all()
@@ -57,6 +63,7 @@ def products(request):
 
 
 @login_required(login_url   = 'login')
+@allowed_users(allowed_roles=['admin'])
 def customer(request, pk    = None):
     template_name           = 'accounts/customers.html'    
     #customer = Customer.objects.get(id =pk)
